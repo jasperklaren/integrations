@@ -70,7 +70,7 @@ The following integrations are supported out of the box. The target integration'
 
 ## Prerequisites
 
-Since the Syslog Router is an Elastic-built tool (not a third-party vendor product), there are no vendor-side prerequisites. The prerequisites are all on the Elastic side:
+The Syslog Router is an Elastic-built tool (not a third-party vendor product), so there are no vendor-side prerequisites. The prerequisites are all on the Elastic side:
 
 - **Elastic Agent**: An Elastic Agent must be installed and enrolled in a Fleet policy on a host that can receive syslog traffic from the network devices.
 - **Kibana/Elasticsearch**: Requires Kibana ^8.14.3 or ^9.0.0, with a basic subscription.
@@ -84,7 +84,7 @@ Since the Syslog Router is an Elastic-built tool (not a third-party vendor produ
 Before adding the Syslog Router, install the assets for each integration you want to route to:
 
 1. In Kibana, navigate to **Management > Integrations**.
-2. Search for the target integration (e.g. "Cisco ASA").
+2. Search for the target integration (for example, "Cisco ASA").
 3. Navigate to the **Settings** tab and click **Install Cisco ASA assets**. Confirm in the popup.
 
 Repeat for each integration whose syslog events you expect to receive.
@@ -109,7 +109,7 @@ Repeat for each integration whose syslog events you expect to receive.
 | **Listen Port** | `listen_port` | `9514` | TCP port number to listen on. |
 | **Preserve original event** | `preserve_original_event` | `false` | Store raw event in `event.original`. |
 | **Reroute configuration** | `reroute_config` | *(22 pre-configured patterns)* | YAML list of `if/then` blocks for pattern matching. |
-| **SSL Configuration** | `ssl` | *(disabled)* | SSL/TLS settings. See [SSL documentation](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-ssl.html#ssl-common-config). |
+| **SSL Configuration** | `ssl` | *(turned off)* | SSL/TLS settings. Refer to [SSL documentation](https://www.elastic.co/guide/en/beats/filebeat/current/configuration-ssl.html#ssl-common-config). |
 | **Custom TCP Options** | `tcp_options` | *(commented out)* | Additional TCP input options. See [TCP input docs](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-tcp.html). |
 | **Tags** | `tags` | `['forwarded']` | Custom tags for filtering. |
 
@@ -124,7 +124,7 @@ Repeat for each integration whose syslog events you expect to receive.
 | **Custom UDP Options** | `udp_options` | *(commented out)* | Additional UDP input options. See [UDP input docs](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-udp.html). |
 | **Tags** | `tags` | `['forwarded']` | Custom tags for filtering. |
 
-#### Filestream input (disabled by default)
+#### Filestream input (turned off by default)
 
 | Setting | Variable | Default | Description |
 |---|---|---|---|
@@ -214,7 +214,7 @@ Additional processors such as `decode_cef` or `syslog` may be added in the `then
 ### 1. Verify the agent is receiving data
 
 1. Check the Elastic Agent logs for the configured input (TCP/UDP) to confirm it is listening.
-2. Send a test syslog message to the agent host on the configured port (e.g. `echo "<190>%ASA-6-302013: test message" | nc localhost 9514`).
+2. Send a test syslog message to the agent host on the configured port (for example, `echo "<190>%ASA-6-302013: test message" | nc localhost 9514`).
 
 ### 2. Check data in Kibana
 
@@ -225,7 +225,7 @@ Additional processors such as `decode_cef` or `syslog` may be added in the `then
 
 ### 3. Check unmatched events
 
-1. Filter for `data_stream.dataset : "syslog_router.log"` to see events that did not match any pattern.
+1. Filter for `data_stream.dataset : "syslog_router.log"` to find events that did not match any pattern.
 2. Examine the `message` field of unmatched events and consider adding new patterns if needed.
 
 # Troubleshooting

@@ -41,7 +41,7 @@ This integration supports routing events from 22 pre-configured integrations out
 
 **DISCLAIMER**: Due to subtle differences in how devices can emit syslog events, the default patterns may not work in all cases. Some integrations that support syslog are not listed here because their patterns would be too complex or could overlap with other integrations, which might cause false matches. Custom patterns may need to be created for those cases.
 
-This integration is compatible with Elastic Stack version 8.14.3 or higher, or 9.0.0 and above.
+This integration is compatible with Elastic Stack version 8.14.3 or later, or 9.0.0 and above.
 
 ### How it works
 
@@ -112,7 +112,7 @@ Refer to each vendor's documentation for specific syslog forwarding instructions
    - **TCP input**: Set **Listen Address** (`localhost` by default) and **Listen Port** (`9514` by default). Optionally configure **SSL Configuration** for encrypted syslog transport.
    - **UDP input**: Set **Listen Address** (`localhost` by default) and **Listen Port** (`9514` by default).
    - **Filestream input** (disabled by default): Set **Paths** to the syslog file locations (default: `/var/log/syslog.log`).
-5. Review the **Reroute configuration** YAML. The integration comes pre-configured with 22 patterns. Modify the list as needed for your environment (see [Configuration](#configuration) below).
+5. Review the **Reroute configuration** YAML. The integration comes pre-configured with 22 patterns. Modify the list as needed for your environment (refer to [Configuration](#configuration) below).
 6. Select the **Elastic Agent policy** to assign this integration to.
 7. Click **Save and continue**.
 
@@ -180,7 +180,7 @@ Pattern definitions may be reordered by moving the entire `if/then` block up or 
           _temp_.external_zones: ['untrust']
 ```
 
-Individual pattern definitions may be disabled by removing the definition entirely or by inserting comment characters (`#`) in front of the appropriate lines:
+Individual pattern definitions can be turned off by removing the definition entirely or by inserting comment characters (`#`) in front of the appropriate lines:
 
 ```yaml
 # - if:
@@ -215,7 +215,7 @@ Example configuration:
         field: message
 ```
 
-At its core, the Syslog Router integration uses the [built-in conditionals and processors](https://www.elastic.co/guide/en/beats/filebeat/current/defining-processors.html) provided within Beats. While there are certain requirements that need to be maintained, additional conditions and processors may be added, if required.
+At its core, the Syslog Router integration uses the [built-in conditionals and processors](https://www.elastic.co/guide/en/beats/filebeat/current/defining-processors.html) provided within Beats. While there are certain requirements that need to be maintained, additional conditions and processors can be added, if required.
 
 The top level of each configuration contains an `if`/`else` condition. In the `if` statement, an `and` combines two conditions. The first ensures that another match has not already occurred, while the second condition is a `regex`, or regular expression, which performs the actual match. If the regular expression matches the `message` field, then the processors in the `then` statement of the configuration will run.
 
@@ -236,7 +236,7 @@ In the `then` statement, a list of processors can be given. At minimum, an `add_
 
 - `_conf.dataset`: The dataset (`integration.data_stream`) to forward to. This field is used by the routing rules in the integration to route documents to the correct pipeline.
 
-Additional processors, such as `decode_cef` or `syslog`, may be provided if additional processing is required.
+Additional processors, such as `decode_cef` or `syslog`, can be provided if additional processing is required.
 
 ### Validation
 
