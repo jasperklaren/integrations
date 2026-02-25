@@ -73,10 +73,10 @@ The routing mechanism works as follows:
 
 Based on your routing configuration, data is directed toward specialized integrations including:
 
-- Network security logs: Firewall traffic and security policy events (for example, `cisco_asa.log`, `panw.panos`, or `fortinet_fortigate.log`).
-- Authentication and identity logs: Identity services and access logs (for example, `cisco_ise.log` or `citrix_waf.log`).
+- Network security logs: Firewall traffic and security policy events (for example, `cisco_asa.log`, `panw.panos`, `fortinet_fortigate.log`, or `arista_ngfw.log`).
+- Web application security logs: Web application firewall events (for example, `citrix_waf.log`).
+- Authentication and identity logs: Identity services and access logs (for example, `cisco_ise.log`).
 - Intrusion detection alerts: IDS/IPS signatures (for example, `snort.log` or `fortinet_fortiedr.log`).
-- System events: Hardware health and configuration changes (for example, `qnap_nas.log` or `arista_ngfw.log`).
 
 ## What do I need to use this integration?
 
