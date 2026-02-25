@@ -46,8 +46,8 @@ The following integrations (listed here alphabetically, but processed in a diffe
 | Citrix WAF (CEF only)           | `citrix_waf.log`                 | `CEF:0\|Citrix\|NetScaler`                              |
 | Fortinet FortiEDR               | `fortinet_fortiedr.log`          | `enSilo` (with surrounding spaces)                      |
 | Fortinet FortiGate              | `fortinet_fortigate.log`         | `devid="?FG`                                            |
-| Fortinet FortiManager           | `fortinet_fortimanager.log`      | `device_id="?FMG`                                       |
 | Fortinet FortiMail              | `fortinet_fortimail.log`         | `device_id="?FE`                                        |
+| Fortinet FortiManager           | `fortinet_fortimanager.log`      | `device_id="?FMG`                                       |
 | Fortinet FortiProxy             | `fortinet_fortiproxy.log`        | `devid="?FPX`                                           |
 | Imperva SecureSphere (CEF only) | `imperva.securesphere`           | `CEF:0\|Imperva Inc.\|SecureSphere`                     |
 | Iptables                        | `iptables.log`                   | `IN=`                                                   |

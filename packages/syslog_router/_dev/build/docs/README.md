@@ -34,8 +34,8 @@ This integration supports routing events from the following 22 pre-configured in
 - Citrix WAF (CEF format only)
 - Fortinet FortiEDR
 - Fortinet FortiGate
-- Fortinet FortiManager
 - Fortinet FortiMail
+- Fortinet FortiManager
 - Fortinet FortiProxy
 - Imperva SecureSphere (CEF format only)
 - Iptables
