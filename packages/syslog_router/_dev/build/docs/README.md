@@ -165,12 +165,6 @@ If you encounter issues while using this integration, check the following common
 - Missing `_conf.dataset` field: If this field is absent, the event defaults to the `syslog_router.log` stream. Review the `message` field and verify it matches a regex defined in your routing configuration.
 - High volume of unmatched events: Review the unmatched events in the `syslog_router.log` stream to identify their source. You might need to add custom routing patterns for device types that aren't covered by the default patterns.
 
-### Vendor resources
-
-The following resources provide additional information regarding the logic used for routing:
-
-- [Elastic Beats Processors Documentation](https://www.elastic.co/guide/en/beats/filebeat/current/defining-processors.html)
-
 ## Performance and scaling
 
 For more information on architectures that can be used for scaling this integration, check the [Ingest Architectures](https://www.elastic.co/docs/manage-data/ingest/ingest-reference-architectures) documentation.
