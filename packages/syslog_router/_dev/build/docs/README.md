@@ -61,7 +61,7 @@ The Syslog Router integration collects log messages of the following types:
 
 - Syslog events (TCP): You can listen for incoming TCP syslog connections on a configurable address and port (default: `localhost:9514`).
 - Syslog events (UDP): You can listen for incoming UDP syslog packets on a configurable address and port (default: `localhost:9514`).
-- Syslog events (Filestream): You can monitor local log files (default: `/var/log/syslog.log`). This input is disabled by default.
+- Syslog events (Filestream): You can monitor local log files (default: `/var/log/syslog.log`). This input is turned off by default.
 
 This integration acts as a transit layer that collects raw syslog events and routes them to other Elastic integrations for parsing. It uses a minimal ingest pipeline that sets `ecs.version` and handles errors. The actual parsing is performed by the target integration's ingest pipeline.
 
@@ -93,7 +93,7 @@ The Syslog Router is an Elastic-built tool and not a third-party vendor product,
 
 Elastic Agent must be installed. For more details, check the Elastic Agent [installation instructions](https://www.elastic.co/guide/en/fleet/current/elastic-agent-installation.html). You can install only one Elastic Agent per host.
 
-Elastic Agent is required to stream data from the syslog or log file receiver and ship the data to Elastic, where the events will then be processed via the integration's ingest pipelines.
+Elastic Agent is required to stream data from the syslog or log file receiver and ship the data to Elastic, where the events will then be processed using the integration's ingest pipelines.
 
 ### Set up steps in Syslog Router
 
@@ -130,7 +130,7 @@ After your devices are ready to send data, you can set up the integration in Kib
     - **TCP input**: Set the **Listen Address** (for example, `0.0.0.0`) and **Listen Port** (for example, `9514`). You can also configure SSL settings if your devices support encrypted syslog.
     - **UDP input**: Set the **Listen Address** and **Listen Port**.
     - **Filestream input**: Specify the **Paths** to the syslog files on the host if the agent is reading from local logs.
-5. Review the **Reroute configuration** section. You'll see a list of patterns used to match incoming logs to specific integrations. You can modify these YAML patterns to match the specific log formats in your environment.
+5. Review the **Reroute configuration** section. You'll find a list of patterns used to match incoming logs to specific integrations. You can modify these YAML patterns to match the specific log formats in your environment.
 6. Select the **Elastic Agent policy** where you want to deploy the integration.
 7. Click **Save and continue**.
 
@@ -177,8 +177,8 @@ For more information on architectures that can be used for scaling this integrat
 
 To optimize the performance and scaling of the Syslog Router, you should follow these best practices:
 
-- Pattern ordering: You should place stricter and more specific patterns before broader ones to avoid false matches. You'll also see better performance if you place your highest-traffic integrations at the top of your configuration to reduce the number of regex evaluations performed for each event.
-- Regex complexity: You should keep your patterns as simple as possible. Avoid using broad patterns like `.*` because they can cause excessive backtracking and increase CPU overhead on the ingestion nodes.
+- Pattern ordering: You should place stricter and more specific patterns before broader ones to avoid false matches. You'll also get better performance if you place your highest-traffic integrations at the top of your configuration to reduce the number of regex evaluations performed for each event.
+- Regex complexity: You should keep your patterns as straightforward as possible. Avoid using broad patterns like `.*` because they can cause excessive backtracking and increase CPU overhead on the ingestion nodes.
 - Transport selection: You can use UDP for higher throughput with lower overhead, but you should use TCP when you need guaranteed delivery. When you use TCP, you can tune advanced settings like `max_connections` and `max_message_size` in the custom TCP options to match your environment's requirements.
 - Agent scaling: For high-throughput environments, you can deploy multiple Elastic Agents behind a network load balancer to distribute the ingestion load across multiple instances.
 - Routing efficiency: This integration routes all events through the `syslog_router.log` data stream. Because the rerouting rules happen at the Elasticsearch level rather than the agent level, you won't experience data duplication at rest, which keeps your storage and processing usage efficient.
@@ -209,7 +209,3 @@ The `log` data stream provides events from syslog of the following types: system
 ##### log fields
 
 {{ fields "log" }}
-
-##### log sample event
-
-{{ event "log" }}

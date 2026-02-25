@@ -102,7 +102,7 @@ Repeat for each integration whose syslog events you expect to receive.
 
 #### Input configuration reference
 
-Note that the `preserve_original_event` setting is not handled by this integration, but rather
+The `preserve_original_event` setting is not handled by this integration, but rather
 by the integration to which the events are routed (to avoid duplicate handling).
 If the user implements a custom integration, they should also implement this processing.
 
