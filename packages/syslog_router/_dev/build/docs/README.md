@@ -105,9 +105,10 @@ Before you add the Syslog Router, you can install the assets for each integratio
 
 1. In Kibana, navigate to **Management > Integrations**.
 2. Find the relevant integration by searching or browsing the catalog. For example, search for "Cisco ASA".
-3. Select the integration, navigate to the **Settings** tab, and click **Install \<Integration Name\> assets**.
-4. Confirm the installation in the popup.
-5. Repeat these steps for every integration whose syslog events you expect to receive and route.
+   ![Cisco ASA Integration](../img/catalog-cisco-asa.png)
+3. Select the integration, navigate to the **Settings** tab, and click **Install \<Integration Name\> assets**. Confirm the installation in the popup.
+   ![Install Cisco ASA assets](../img/install-assets.png)
+4. Repeat these steps for every integration whose syslog events you expect to receive and route.
 
 #### Configure syslog on network devices
 
